@@ -29,12 +29,12 @@ export const addNewTask = async task => {
 
 authenticationRoute(app);
 
-// if (process.env.NODE_ENV == `production`) {
-//   app.use(express.static(path.resolve(__dirname, "../../dist")));
-//   app.get("/*", (req, res) => {
-//     res.sendFile(path.resolve("index.html"));
-//   });
-// }
+if (process.env.NODE_ENV == `production`) {
+  app.use(express.static(path.resolve(__dirname, "../../dist")));
+  app.get("/*", (req, res) => {
+    res.sendFile(path.resolve("index.html"));
+  });
+}
 
 app.post("/task/new", async (req, res) => {
   // let task = req.body.task;

@@ -10,16 +10,14 @@ import { store } from "../store";
 import { history } from "../store/history";
 import { Redirect } from "react-router";
 
-const RouteGuard = Component => ({ match }) => 
-{
+const RouteGuard = Component => ({ match }) => {
   console.info("RouteGuard", match);
-  return <Component match={match} />;
+  if (!store.getState().session.authenticated) {
+    return <Redirect to="/" />;
+  } else {
+    return <Component match={match} />;
+  }
 };
-// !store.getState().session.authenticated ? (
-//   <Redirect to="/" />
-// ) : (
-//   <Component match={match} />
-// );
 
 export const Main = () => (
   <Router history={history}>

@@ -6,7 +6,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 
 import "./initialize-db";
-// import { authenticationRoute } from "./authenticate";
+import { authenticationRoute } from "./authenticate";
 
 import { connectDB } from "./connect-db";
 // import { addNewTask, updateTask } from "./communicate-db";
@@ -27,7 +27,7 @@ export const addNewTask = async task => {
   await collection.insertOne(task);
 };
 
-// authenticationRoute(app);
+authenticationRoute(app);
 
 // if (process.env.NODE_ENV == `production`) {
 //   app.use(express.static(path.resolve(__dirname, "../../dist")));
